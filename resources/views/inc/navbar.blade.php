@@ -30,7 +30,7 @@
                 </li>
                 <li class="nav-main-item">
                     <div>
-                        <a aria-current="page" href="/#" class="active nav-main-link">
+                        <a aria-current="page" href=" {{ route('about') }} " class="active nav-main-link">
                             <i class="nav-main-link-icon si si-question"></i>
                             <span class="nav-main-link-name">How
                                 does it work?</span>

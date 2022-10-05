@@ -31,3 +31,8 @@ a.link {
 .nav-pill {
     background-color: $gray-600 !important;
 }
+
+span.marked {
+    text-decoration: underline;
+    color: $primary;
+}
