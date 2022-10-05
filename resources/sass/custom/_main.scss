@@ -31,3 +31,23 @@ a.link {
 .nav-pill {
     background-color: $gray-600 !important;
 }
+
+span.marked {
+    text-decoration: underline;
+    color: $primary;
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+}
+
+$sizes: ( 25: 25%, 50: 50%, 75: 75%, 100: 100%, auto: auto );
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @each $size, $length in $sizes {
+      @include media-breakpoint-up($breakpoint) {
+        .w-#{$breakpoint}-#{$size} {width: $length !important;}
+      }
+    }
+}
