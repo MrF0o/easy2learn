@@ -11,3 +11,23 @@
 // For example you can create _component1.scss and include it as follows:
 // @import 'component1';
 
+@import 'variables';
+@import '../bootstrap/variables';
+
+.bg-lightgray {
+    background-color: $light-gray;
+}
+
+a.link {
+    color: $info;
+    text-decoration: underline;
+}
+
+.nav-pill.active {
+    background-color: $info !important;
+
+}
+
+.nav-pill {
+    background-color: $gray-600 !important;
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [HomeController::class, 'index']);
+Route::view('/benefits', 'pages.benefits')->name('benefits');
+Route::view('/how-it-works', 'pages.about')->name('about');
+Route::view('/pricing', 'pages.pricing')->name('pricing');
+Route::view('/support', 'pages.support')->name('support');
+
 // Example Routes
-Route::view('/', 'landing');
+// Route::view('/', 'landing');
 Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
 });
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
+
