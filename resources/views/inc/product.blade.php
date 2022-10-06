@@ -17,20 +17,20 @@
             <p class="fw-normal h5 question fw-bold">What are the advantages of using Easy2learn?</p>
             <div class="row">
                 <div class="col px-1 pb-1">
-                    <textarea style="resize: none;" rows="5" class="form-control"
+                    <textarea style="resize: none;" rows="6" class="form-control"
                         placeholder="Try to answer here or click the SHOW ANSWER button"></textarea>
-                    <div class="d-flex justify-content-between py-2">
-                        <div>
+                    <div class="d-flex justify-content-between align-items-center py-2">
+                        <div class="d-none d-md-block">
                             <a href="#" class="link">How does it work?</a>
                         </div>
+                        <div class="h2 p-0 m-0">
+                            <a href="#" class="text-primary p-1"><i
+                                    class="fa-solid fa-angle-left"></i></a>
+                            <a href="#" class="link text-muted"><i class="fa-solid fa-angle-right"></i></a>
+                        </div>
                         <div class="d-flex align-items-center">
-                            <div class="p-2">
+                            <div class="">
                                 <button class="btn btn-primary btn-sm">SHOW ANSWER</button>
-                            </div>
-                            <div class="fs-lg">
-                                <a href="#" class="text-primary p-1"><i
-                                        class="fa-solid fa-angle-left lin"></i></a>
-                                <a href="#" class="link text-muted"><i class="fa-solid fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
