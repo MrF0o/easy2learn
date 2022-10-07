@@ -3,12 +3,12 @@
 @section('content')
     <div class="content row d-flex justify-content-center">
         <div class="row text-center">
-            <p class="h2">How does it work?</p>
+            <p class="h2">Pricing</p>
         </div>
         <div class="col-md-6 col-xl-3">
             <a href="javascript:void(0)" class="block-rounded block-link-shadow block text-center">
                 <div class="block-header">
-                    <h3 class="block-title">Free</h3>
+                    <h2 class="block-title">Free</h2>
                 </div>
                 <div class="block-content bg-body-light">
                     <div class="py-2">
@@ -18,10 +18,10 @@
                 </div>
                 <div class="block-content">
                     <div class="fs-sm py-2">
-                        <p><strong>1</strong> course</p>
-                        <p><strong>Max 30</strong> Q&A's</p>
-                        <p>90 days archive</p>
-                        <p>Ads</p>
+                        <p class="m-0 p-1"><strong>1</strong> course</p>
+                        <p class="m-0 p-1"><strong>Max 30</strong> Q&A's</p>
+                        <p class="m-0 p-1">90 days archive</p>
+                        <p class="m-0 p-1">Ads</p>
                     </div>
                 </div>
                 <div class="block-content block-content-full bg-body-light">
@@ -32,7 +32,7 @@
         <div class="col-md-6 col-xl-3">
             <a href="javascript:void(0)" class="block-rounded block-link-shadow block text-center">
                 <div class="block-header">
-                    <h3 class="block-title">STUDENT +</h3>
+                    <h2 class="block-title">STUDENT +</h2>
                 </div>
                 <div class="block-content bg-body-light">
                     <div class="py-2">
@@ -42,18 +42,18 @@
                 </div>
                 <div class="block-content">
                     <div class="fs-sm py-2">
-                        <p><strong>Unlimited courses</strong></p>
-                        <p><strong>Unlimited Q&A's</strong></p>
-                        <p><strong>Unlimited archive</strong></p>
-                        <p><strong>Export summary (PDF,Word)</strong></p>
-                        <p><strong>Share your summaries</strong></p>
-                        <p><strong>Sell your summaries (*)  <br><span class="text-sm">(in private or public)</span></strong></p>
-                        <p><strong>Ad-free</strong></p>
-                        <p><strong>Support</strong></p>
+                        <p class="m-0 p-1"><strong>Unlimited courses</strong></p>
+                        <p class="m-0 p-1"><strong>Unlimited Q&A's</strong></p>
+                        <p class="m-0 p-1"><strong>Unlimited archive</strong></p>
+                        <p class="m-0 p-1"><strong>Export summary (PDF,Word)</strong></p>
+                        <p class="m-0 p-1"><strong>Share your summaries</strong></p>
+                        <p class="m-0 p-1"><strong>Sell your summaries (*)  <br><span class="text-sm text-muted">(in private or public)</span></strong></p>
+                        <p class="m-0 p-1"><strong>Ad-free</strong></p>
+                        <p class="m-0 p-1"><strong>Support</strong></p>
                     </div>
                 </div>
                 <div class="block-content block-content-full bg-body-light">
-                    <span class="btn btn-primary px-4">UPGRADE</span>
+                    <span class="btn btn-primary px-4 disabled">UPGRADE</span>
                     <p class="text-muted fs-sm">* In development</p>
                 </div>
             </a>
