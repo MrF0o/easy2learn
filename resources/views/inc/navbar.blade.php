@@ -50,6 +50,29 @@
                     </div>
                     <!---->
                 </li>
+                <div class="d-lg-flex justify-lg-content-end align-items-lg-center ps-lg-3">
+                    <li class="nav-main-item">
+                        <div>
+                            <a aria-current="page" href="/#" class="active nav-main-link pe-lg-1">
+                                
+                                <span class="nav-main-link-name">Login</span>
+                                <!---->
+                            </a>
+                        </div>
+                        <!---->
+                    </li>
+                    <span class="text-white p-1 d-none d-lg-inline">|</span>
+                    <li class="nav-main-item">
+                        <div>
+                            <a aria-current="page" href="/#" class="active nav-main-link ps-lg-1">
+                                
+                                <span class="nav-main-link-name">register</span>
+                                <!---->
+                            </a>
+                        </div>
+                        <!---->
+                    </li>
+                </div>
                 {{-- <li class="nav-main-item">
                     <div>
                         <a aria-current="page" href="/#" class="active nav-main-link">
