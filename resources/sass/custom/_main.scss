@@ -54,6 +54,22 @@ span.marked {
     }
 }
 
+.btn-google {
+    background-color: #ca3523;
+    color: white;
+    &:hover {
+        background-color: rgba(#ca3523, 0.5);
+    }
+}
+
+.btn-facebook {
+    background-color: #3b5998;
+    color: white;
+    &:hover {
+        background-color: rgba(#3b5998, 0.5);
+    }
+}
+
 $sizes: (
     25: 25%,
     35: 35%,
