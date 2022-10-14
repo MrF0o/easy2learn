@@ -38,7 +38,7 @@
                         <div class="mt-4">
                             <button type="submit" class="btn btn-alt-info px-5"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
                         </div>
-                        <hr>
+                        {{-- <hr>
                         <div class="text-center fs-sm">
                             OR login by using the following
                         </div>
@@ -49,7 +49,7 @@
                             <div class="col-lg-6 m-2 m-lg-0">
                                 <button class="btn btn-google px-5 w-100"><i class="fab fa-google px-1"></i> Google</button>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>
