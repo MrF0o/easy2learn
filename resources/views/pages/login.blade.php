@@ -27,15 +27,16 @@
                     <p class="text-muted fw-normal">Welcome please login</p>
                 </div>
                 <div class="row mx-4">
-                    <form>
+                    <form action=" {{route('auth.login')}} " method="POST">
+                        @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control form-control-alt" placeholder="Username">
+                            <input name="username" type="text" class="form-control form-control-alt" placeholder="Username">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-alt" placeholder="Password">
+                            <input name="password" type="password" class="form-control form-control-alt" placeholder="Password">
                         </div>
                         <div class="mt-4">
-                            <button class="btn btn-alt-info px-5"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
+                            <button type="submit" class="btn btn-alt-info px-5"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
                         </div>
                         <hr>
                         <div class="text-center fs-sm">

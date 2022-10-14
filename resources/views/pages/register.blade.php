@@ -26,25 +26,26 @@
                     <p class="text-muted fw-normal">Please fill in the following details to create an account.</p>
                 </div>
                 <div class="row mx-4">
-                    <form>
+                    <form method="POST" action="{{ route('auth.register') }}">
+                        @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control form-control-alt" placeholder="Username">
+                            <input type="text" name="username" class="form-control form-control-alt" placeholder="Username">
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control form-control-alt" placeholder="Email">
+                            <input type="email" name="email" class="form-control form-control-alt" placeholder="Email">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-alt" placeholder="Password">
+                            <input type="password" name="password" class="form-control form-control-alt" placeholder="Password">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-alt" placeholder="Confirm Password">
+                            <input type="password" name="password_confirmation" class="form-control form-control-alt" placeholder="Confirm Password">
                         </div>
                         <div class="mb-3">
-                            <input type="checkbox" class="form-check-input" id="checkbox-terms" placeholder="Confirm Password">
+                            <input type="checkbox" name="agree_terms" class="form-check-input" id="checkbox-terms" placeholder="Confirm Password">
                             <label for="checkbox-terms" class="pe-1">I agree to Terms & Conditions</label>
                         </div>
                         <div class="mt-4">
-                            <button class="btn btn-alt-primary px-5"><i class="fa fa-plus px-1"></i> Sign Up</button>
+                            <button class="btn btn-alt-primary px-5" type="submit"><i class="fa fa-plus px-1"></i> Sign Up</button>
                         </div>
                         <hr>
                         <div class="text-center fs-sm">

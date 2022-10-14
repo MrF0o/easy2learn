@@ -19,8 +19,15 @@ Route::view('/benefits', 'pages.benefits')->name('benefits');
 Route::view('/how-it-works', 'pages.about')->name('about');
 Route::view('/pricing', 'pages.pricing')->name('pricing');
 Route::view('/support', 'pages.support')->name('support');
-Route::view('/login', 'pages.login')->name('login');
-Route::view('/register', 'pages.register')->name('register');
+Route::view('/login', 'pages.login')->name('login')->middleware('guest');
+Route::view('/register', 'pages.register')->name('register')->middleware('guest');
+
+
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::post('/register', 'RegisterController@create')->name('auth.register');
+    Route::post('/login', 'LoginController@login')->name('auth.login');
+    Route::post('/logout', 'LogoutController@logout')->name('auth.logout');
+});
 
 // Example Routes
 // Route::view('/', 'landing');
