@@ -19,7 +19,8 @@ class RegisterController extends Controller
         $validated = $request->validate([
             'password' => 'min:6|required|confirmed',
             'email' => 'email|required',
-            'username' => 'required|max:12'
+            'username' => 'required|max:12',
+            'terms_agreement' => 'accepted'
         ]);
 
 

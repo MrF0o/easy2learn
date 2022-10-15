@@ -35,8 +35,8 @@
                         <div class="mb-3">
                             <input name="password" type="password" class="form-control form-control-alt" placeholder="Password">
                         </div>
-                        <div class="mt-4">
-                            <button type="submit" class="btn btn-alt-info px-5"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
+                        <div class="my-4">
+                            <button type="submit" class="btn btn-alt-info px-5 mb-3 float-end"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
                         </div>
                         {{-- <hr>
                         <div class="text-center fs-sm">
