@@ -74,7 +74,7 @@ export default {
     return {
       currentQuestionNum: 0,
       answer: "",
-      isAnswerShowing: true,
+      isAnswerShowing: false,
       nextQuestions: 5,
       prevQuestionsNum: 0,
     };
