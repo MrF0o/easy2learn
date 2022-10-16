@@ -7,8 +7,10 @@
       <nav id="sidebar">
       <Sidebar />
       </nav>
-      <main id="main-container">main</main>
-      <footer id="page-footer">Footer</footer>
+      <main class="container">
+        <router-view />
+      </main>
+      <footer id="page-footer"></footer>
     </nav>
   </div>
 </template>
