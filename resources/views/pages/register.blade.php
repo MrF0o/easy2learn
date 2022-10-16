@@ -26,27 +26,48 @@
                     <p class="text-muted fw-normal">Please fill in the following details to create an account.</p>
                 </div>
                 <div class="row mx-4">
-                    <form>
+                    <form method="POST" action="{{ route('auth.register') }}">
+                        @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control form-control-alt" placeholder="Username">
+                            <input type="text" name="username" class="form-control form-control-alt"
+                                placeholder="Username">
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control form-control-alt" placeholder="Email">
+                            <input name="email" class="form-control form-control-alt" placeholder="Email">
+                            @if ($errors->has('email'))
+                                <div>
+                                    <strong class="fs-sm">{{ $errors->first('email') }}</strong>
+                                </div>
+                            @endif
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-alt" placeholder="Password">
+                            <input type="password" name="password" class="form-control form-control-alt"
+                                placeholder="Password">
+                            @if ($errors->has('password'))
+                                <div>
+                                    <strong class="fs-sm">{{ $errors->first('password') }}</strong>
+                                </div>
+                            @endif
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-alt" placeholder="Confirm Password">
+                            <input type="password" name="password_confirmation" class="form-control form-control-alt"
+                                placeholder="Confirm Password">
                         </div>
                         <div class="mb-3">
-                            <input type="checkbox" class="form-check-input" id="checkbox-terms" placeholder="Confirm Password">
+                            <input type="checkbox" name="terms_agreement" class="form-check-input" id="checkbox-terms"
+                                placeholder="Confirm Password">
                             <label for="checkbox-terms" class="pe-1">I agree to Terms & Conditions</label>
+                            @if ($errors->has('terms_agreement'))
+                                <div>
+                                    <strong class="fs-sm">{{ $errors->first('terms_agreement') }}</strong>
+                                </div>
+                            @endif
                         </div>
-                        <div class="mt-4">
-                            <button class="btn btn-alt-primary px-5"><i class="fa fa-plus px-1"></i> Sign Up</button>
+                        <div class="my-4">
+                            <button class="btn btn-alt-primary px-5 mb-3 float-end" type="submit"><i
+                                    class="fa fa-plus px-1"></i> Sign Up</button>
                         </div>
-                        <hr>
+                        {{-- <hr>
                         <div class="text-center fs-sm">
                             OR create an account by using the following
                         </div>
@@ -57,7 +78,7 @@
                             <div class="col-lg-6 m-2 m-lg-0">
                                 <button class="btn btn-google px-5 w-100"><i class="fab fa-google px-1"></i> Google</button>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>

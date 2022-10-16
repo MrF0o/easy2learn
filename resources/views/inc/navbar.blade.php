@@ -21,7 +21,7 @@
                 <li class="nav-main-item">
                     <div>
                         <a aria-current="page" href=" {{ route('benefits') }} " class="active nav-main-link">
-                            
+
                             <span class="nav-main-link-name">The
                                 Benefits</span>
                             <!---->
@@ -32,7 +32,7 @@
                 <li class="nav-main-item">
                     <div>
                         <a aria-current="page" href=" {{ route('about') }} " class="active nav-main-link">
-                            
+
                             <span class="nav-main-link-name">How
                                 does it work?</span>
                             <!---->
@@ -43,36 +43,59 @@
                 <li class="nav-main-item">
                     <div>
                         <a aria-current="page" href=" {{ route('pricing') }} " class="active nav-main-link">
-                            
+
                             <span class="nav-main-link-name">Pricing</span>
                             <!---->
                         </a>
                     </div>
                     <!---->
                 </li>
-                <div class="d-lg-flex justify-lg-content-end align-items-lg-center ps-lg-3">
-                    <li class="nav-main-item">
-                        <div>
-                            <a aria-current="page" href="{{ route('login') }}" class="active nav-main-link pe-lg-1">
-                                
-                                <span class="nav-main-link-name">Login</span>
-                                <!---->
-                            </a>
+                @if (!Auth::check())
+                    <div class="d-lg-flex justify-lg-content-end align-items-lg-center ps-lg-3">
+                        <li class="nav-main-item">
+                            <div>
+                                <a aria-current="page" href="{{ route('login') }}" class="active nav-main-link pe-lg-1">
+
+                                    <span class="nav-main-link-name">Login</span>
+                                    <!---->
+                                </a>
+                            </div>
+                            <!---->
+                        </li>
+                        <span class="text-white p-1 d-none d-lg-inline">|</span>
+                        <li class="nav-main-item">
+                            <div>
+                                <a aria-current="page" href="{{ route('register') }}"
+                                    class="active nav-main-link ps-lg-1">
+
+                                    <span class="nav-main-link-name">register</span>
+                                    <!---->
+                                </a>
+                            </div>
+                            <!---->
+                        </li>
+                    </div>
+                @else
+                    <div class="dropdown text-white">
+                        <button type="button" class="btn btn-dark btn-top-dropdown dropdown-toggle" id=""
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->username }} </button>
+                        <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-default-alt-secondary">
+                            <a class="dropdown-item" href="javascript:void(0)">Control Panel</a>
+                            @if (Auth::user()->isAdmin)
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('mcp') }}">Master Control Panel</a>
+                            @endif
+                            <div class="dropdown-divider"></div>
+                            <form action=" {{route('auth.logout')}} " method="POST">
+                                @csrf
+
+                                <button class="dropdown-item text-danger btn-none" type="submit" href="javascript:void(0)">logout</button>
+
+                            </form>
                         </div>
-                        <!---->
-                    </li>
-                    <span class="text-white p-1 d-none d-lg-inline">|</span>
-                    <li class="nav-main-item">
-                        <div>
-                            <a aria-current="page" href="{{ route('register') }}" class="active nav-main-link ps-lg-1">
-                                
-                                <span class="nav-main-link-name">register</span>
-                                <!---->
-                            </a>
-                        </div>
-                        <!---->
-                    </li>
-                </div>
+                    </div>
+                @endif
                 {{-- <li class="nav-main-item">
                     <div>
                         <a aria-current="page" href="/#" class="active nav-main-link">

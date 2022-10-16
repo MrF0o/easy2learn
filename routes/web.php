@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MCPController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::view('/benefits', 'pages.benefits')->name('benefits');
+
 Route::view('/how-it-works', 'pages.about')->name('about');
+Route::view('/benefits', 'pages.benefits')->name('benefits');
 Route::view('/pricing', 'pages.pricing')->name('pricing');
-Route::view('/support', 'pages.support')->name('support');
 Route::view('/login', 'pages.login')->name('login');
 Route::view('/register', 'pages.register')->name('register');
+Route::get('/mcp', [MCPController::class, 'index'])->name('mcp');
 
-// Example Routes
-// Route::view('/', 'landing');
-Route::match(['get', 'post'], '/dashboard', function(){
-    return view('dashboard');
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::post('/register', 'RegisterController@create')->name('auth.register');
+    Route::post('/login', 'LoginController@login')->name('auth.login');
+    Route::post('/logout', 'LogoutController@logout')->name('auth.logout');
 });
-Route::view('/pages/slick', 'pages.slick');
-Route::view('/pages/datatables', 'pages.datatables');
-Route::view('/pages/blank', 'pages.blank');
-

@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>Easy2Learn - Study 30% FASTER</title>
+    <title>Easy2Learn Master Control Panel</title>
 
-    <meta name="description"
-        content="Easy2learn is an easy system that ask you questions you already added for later studying">
+    <meta name="author" content="fathihelmi">
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Icons -->
     <link rel="shortcut icon" href="{{ asset('media/favicons/favicon.png') }}">
@@ -26,25 +26,8 @@
 
 <body>
 
-    <div id="page-container">
+    @yield('content')
 
-        <header>
-            @include('inc.navbar')
-        </header>
-
-        <!-- Main Container -->
-        <main >
-            @yield('content')
-        </main>
-        <!-- END Main Container -->
-    </div>
-
-    @include('inc.quiz')
-
-    <footer id="page-footer" class="bg-body-light">
-        @include('inc.footer')
-    </footer>
-    <!-- END Page Container -->
 </body>
 
 </html>

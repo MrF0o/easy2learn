@@ -27,17 +27,18 @@
                     <p class="text-muted fw-normal">Welcome please login</p>
                 </div>
                 <div class="row mx-4">
-                    <form>
+                    <form action=" {{route('auth.login')}} " method="POST">
+                        @csrf
                         <div class="mb-3">
-                            <input type="text" class="form-control form-control-alt" placeholder="Username">
+                            <input name="username" type="text" class="form-control form-control-alt" placeholder="Username">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control form-control-alt" placeholder="Password">
+                            <input name="password" type="password" class="form-control form-control-alt" placeholder="Password">
                         </div>
-                        <div class="mt-4">
-                            <button class="btn btn-alt-info px-5"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
+                        <div class="my-4">
+                            <button type="submit" class="btn btn-alt-info px-5 mb-3 float-end"><i class="fa-solid fa-right-to-bracket"></i> Sign In</button>
                         </div>
-                        <hr>
+                        {{-- <hr>
                         <div class="text-center fs-sm">
                             OR login by using the following
                         </div>
@@ -48,7 +49,7 @@
                             <div class="col-lg-6 m-2 m-lg-0">
                                 <button class="btn btn-google px-5 w-100"><i class="fab fa-google px-1"></i> Google</button>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>
