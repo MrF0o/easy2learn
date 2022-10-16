@@ -82,9 +82,9 @@
                             {{ Auth::user()->username }} </button>
                         <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-default-alt-secondary">
                             <a class="dropdown-item" href="javascript:void(0)">Control Panel</a>
-                            @if (Auth::user()->id == 1)
+                            @if (Auth::user()->isAdmin)
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item"href="javascript:void(0)">Master Control Panel</a>
+                                <a class="dropdown-item" href="{{ route('mcp') }}">Master Control Panel</a>
                             @endif
                             <div class="dropdown-divider"></div>
                             <form action=" {{route('auth.logout')}} " method="POST">

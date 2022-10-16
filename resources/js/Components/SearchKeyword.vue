@@ -54,7 +54,8 @@ export default {
     },
     methods: {
         clear() {
-            this.search = ''
+            this.search = '';
+            this.questions = [];
         },
         searchAnswer() {
             this.questions = provider.search(this.search);

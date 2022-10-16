@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MCPController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,17 +17,17 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::get('/', [HomeController::class, 'index']);
+
+Route::view('/how-it-works', 'pages.about')->name('about');
+Route::view('/benefits', 'pages.benefits')->name('benefits');
+Route::view('/pricing', 'pages.pricing')->name('pricing');
+Route::view('/login', 'pages.login')->name('login');
+Route::view('/register', 'pages.register')->name('register');
+Route::get('/mcp', [MCPController::class, 'index'])->name('mcp');
+
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::post('/register', 'RegisterController@create')->name('auth.register');
+    Route::post('/login', 'LoginController@login')->name('auth.login');
+    Route::post('/logout', 'LogoutController@logout')->name('auth.logout');
 });
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-require __DIR__.'/auth.php';
