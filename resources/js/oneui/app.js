@@ -6,6 +6,7 @@
  */
 
 // Import required modules
+import Helpers from './modules/helpers';
 import Template from './modules/template';
 
 // App extends Template
@@ -16,6 +17,7 @@ export default class App extends Template {
    */
   constructor() {
     super();
+    Helpers.jsCkeditor5();
   }
 
   /*
@@ -44,12 +46,13 @@ export default class App extends Template {
    *
    */
 
-  //  _uiInit() {
-  //      // Call original function
-  //      super._uiInit();
-  //
-  //      // Your extra JS code afterwards
-  //  }
+   _uiInit() {
+       // Call original function
+       super._uiInit();
+  
+       // Your extra JS code afterwards
+       
+   }
 
   /*
    * EXAMPLE #3 - Replacing default functionality by writing your own code

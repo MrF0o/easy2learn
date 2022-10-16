@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MCPController;
+use App\Http\Controllers\QAController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,6 +26,10 @@ Route::view('/pricing', 'pages.pricing')->name('pricing');
 Route::view('/login', 'pages.login')->name('login');
 Route::view('/register', 'pages.register')->name('register');
 Route::get('/mcp', [MCPController::class, 'index'])->name('mcp');
+Route::post('/mcp/questions/store', [QAController::class, 'store'])->name('question.store');
+Route::get('/mcp/questions/list', [QAController::class, 'list'])->name('question.list');
+Route::get('/mcp/{any?}', [MCPController::class, 'index'])->where('any', '.*')->name('mcp.any');
+
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::post('/register', 'RegisterController@create')->name('auth.register');
