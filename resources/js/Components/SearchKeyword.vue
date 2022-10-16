@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Qs from './answers';
+import provider from '../AnswerProvider';
 
 export default {
     data() {
@@ -57,7 +57,7 @@ export default {
             this.search = ''
         },
         searchAnswer() {
-            this.questions = Qs;
+            this.questions = provider.search(this.search);
         }
     }
 };
