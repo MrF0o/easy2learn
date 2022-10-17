@@ -1,6 +1,6 @@
 <template>
   <div class="table-responsive">
-    <table class="block table table-bordered table-striped table-vcenter">
+    <table class="table table-bordered table-striped table-vcenter">
       <thead class="">
         <tr>
           <th>-</th>
