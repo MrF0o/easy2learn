@@ -7,7 +7,7 @@
     tabindex="0"
   >
     <p class="fw-normal h5 question fw-bold">
-      {{currentQuestion.q}}
+      {{ currentQuestion.question }}
     </p>
     <div class="row">
       <div class="col px-1 pb-1">
@@ -23,10 +23,16 @@
             <a href="#" class="link">How does it work?</a>
           </div>
           <div class="h2 p-0 m-0">
-            <a href="#" :class="(prevQuestionsCount > 0 ? 'text-primary' : '') + 'p-1'" @click="prevAnswer($event)"
+            <a
+              href="#"
+              :class="(prevQuestionsCount > 0 ? 'text-primary' : '') + 'p-1'"
+              @click="prevAnswer($event)"
               ><i class="fa-solid fa-angle-left"></i
             ></a>
-            <a href="#" :class="(nextQuestionsCount > 0 ? 'text-primary' : '') + 'p-1'" @click="nextAnswer($event)"
+            <a
+              href="#"
+              :class="(nextQuestionsCount > 0 ? 'text-primary' : '') + 'p-1'"
+              @click="nextAnswer($event)"
               ><i class="fa-solid fa-angle-right"></i
             ></a>
           </div>
@@ -54,46 +60,57 @@
     <div id="answer" class="collapse">
       <hr />
       <div><h4 class="fs-sm">ANSWER:</h4></div>
-      <div v-html="currentQuestion.a">
-        
-      </div>
+      <div v-html="currentQuestion.answer"></div>
     </div>
   </div>
 </template>
 
 <script>
-
-import Qs from './answers';
+import Qs from "./answers";
 
 export default {
   data() {
     return {
-      currentQuestionNum: 0,
+      currentQuestionNum: 1,
       answer: "",
       isAnswerShowing: false,
       nextQuestionsCount: 5,
       prevQuestionsCount: 0,
+      currentQuestion: {},
     };
   },
   mounted() {
-    this.currentQuestion = Qs[this.currentQuestionNum];
+    axios
+      .get(window.location.href + `mcp/questions/${this.currentQuestionNum}`)
+      .then((res) => {
+        this.currentQuestion = res.data;
+      });
   },
   methods: {
     showAnswer() {},
     nextAnswer(e) {
       e.preventDefault();
       this.currentQuestionNum++;
+      axios
+        .get(
+          window.location.href + `mcp/questions/${this.currentQuestionNum}`
+        )
+        .then((res) => {
+          this.currentQuestion = res.data;
+        });
     },
     prevAnswer(e) {
       e.preventDefault();
       this.currentQuestionNum--;
-    }
+      axios
+        .get(
+          window.location.href + `mcp/questions/${this.currentQuestionNum}`
+        )
+        .then((res) => {
+          this.currentQuestion = res.data;
+        });
+    },
   },
-  computed: {
-    currentQuestion () {
-      return Qs[this.currentQuestionNum];
-    }
-  }
 };
 </script>
 

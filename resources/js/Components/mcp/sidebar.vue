@@ -32,45 +32,33 @@
     <div class="content-side">
       <ul class="nav-main">
         <li class="nav-main-item">
-          <a class="nav-main-link active" href="#">
+          <router-link class="nav-main-link" to="/mcp">
             <i class="nav-main-link-icon si si-speedometer"></i>
             <span class="nav-main-link-name">Dashboard</span>
-          </a>
+          </router-link>
         </li>
         <li class="nav-main-item">
-          <a
-            class="nav-main-link"
-            data-toggle="submenu"
-            aria-haspopup="true"
-            aria-expanded="false"
-            href="#"
-          >
+          <router-link class="nav-main-link" to="/mcp">
             <i class="nav-main-link-icon si si-layers"></i>
             <span class="nav-main-link-name">Students Free</span>
-          </a>
+          </router-link>
         </li>
         <li class="nav-main-item">
-          <a
-            class="nav-main-link"
-            data-toggle="submenu"
-            aria-haspopup="true"
-            aria-expanded="false"
-            href="#"
-          >
+          <router-link class="nav-main-link" to="/mcp">
             <i class="nav-main-link-icon si si-layers"></i>
             <span class="nav-main-link-name">Students +</span>
-          </a>
+          </router-link>
         </li>
         <li class="nav-main-item">
-          <a
-            class="nav-main-link"
-            data-toggle="submenu"
-            aria-haspopup="true"
-            aria-expanded="false"
-            href="#"
-          >
+          <router-link class="nav-main-link" to="/mcp">
             <i class="nav-main-link-icon si si-layers"></i>
             <span class="nav-main-link-name">Students ++</span>
+          </router-link>
+        </li>
+        <li class="nav-main-item">
+          <a class="nav-main-link" href="/mcp/questions">
+            <i class="nav-main-link-icon fa fa-question"></i>
+            <span class="nav-main-link-name">Questions</span>
           </a>
         </li>
       </ul>

@@ -11,20 +11,19 @@ function highlight(str, search) {
 }
 
 class AnswerProvider {
-    search(term) {
+    async search(term) {
         // TODO: get from backend
-        const questions = Qs.map(q => JSON.parse(JSON.stringify(q)));
+        const questions = (await axios.post(window.location.href + `mcp/questions/search`, {
+            searchQuery: term
+        })).data;
+
         const result = [];
 
         for (let i = 0; i < questions.length; i++) {
-            if (questions[i].q.toLowerCase().includes(term.toLowerCase()) || questions[i].a.toLowerCase().includes(term.toLowerCase())) {
-                if (result.length < 2) {
-                    const highlighted = questions[i];
-                    highlighted.q = highlight(highlighted.q, term);
-                    highlighted.a = highlight(highlighted.a, term);
-                    result.push(highlighted);
-                } else break;
-            }
+            const highlighted = questions[i];
+            highlighted.question = highlight(highlighted.question, term);
+            highlighted.answer = highlight(highlighted.answer, term);
+            result.push(highlighted);
         }
 
         return result;

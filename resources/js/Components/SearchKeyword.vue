@@ -35,8 +35,8 @@
     <div v-show="questions.length">
       <div class="fw-bold fs-sm my-2"><u>{{questions.length}} RESULTS</u></div>
       <div class="result" v-for="q in questions" :key="q.id">
-        <h4 v-html="q.q"></h4>
-        <div v-html="q.a"></div>
+        <h4 v-html="q.question"></h4>
+        <div v-html="q.answer"></div>
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@ export default {
     data() {
         return {
             questions: [],
-            search: 'advantages'
+            search: 'last'
         }
     },
     methods: {
@@ -57,8 +57,9 @@ export default {
             this.search = '';
             this.questions = [];
         },
-        searchAnswer() {
-            this.questions = provider.search(this.search);
+        async searchAnswer() {
+            this.questions = await provider.search(this.search);
+            console.log(this.questions)
         }
     }
 };
