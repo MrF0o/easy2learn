@@ -56,10 +56,10 @@
           </router-link>
         </li>
         <li class="nav-main-item">
-          <router-link class="nav-main-link" to="/mcp/questions">
+          <a class="nav-main-link" href="/mcp/questions">
             <i class="nav-main-link-icon fa fa-question"></i>
             <span class="nav-main-link-name">Questions</span>
-          </router-link>
+          </a>
         </li>
       </ul>
     </div>
