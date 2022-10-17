@@ -28,6 +28,10 @@ Route::view('/register', 'pages.register')->name('register');
 Route::get('/mcp', [MCPController::class, 'index'])->name('mcp');
 Route::post('/mcp/questions/store', [QAController::class, 'store'])->name('question.store');
 Route::get('/mcp/questions/list', [QAController::class, 'list'])->name('question.list');
+Route::post('/mcp/questions/sort', [QAController::class, 'reorder'])->name('question.reorder');
+Route::post('/mcp/questions/delete', [QAController::class, 'delete'])->name('question.delete');
+Route::get('/mcp/questions/{id}', [QAController::class, 'get'])->name('question.get');
+Route::post('/mcp/questions/search', [QAController::class, 'search'])->name('question.search');
 Route::get('/mcp/{any?}', [MCPController::class, 'index'])->where('any', '.*')->name('mcp.any');
 
 

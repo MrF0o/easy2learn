@@ -8,64 +8,71 @@
           <th>Actions</th>
         </tr>
       </thead>
-        <draggable v-model="items" tag="tbody" item-key="id">
-          <template #item="{ element }">
-            <tr>
-              <td><i class="fa-solid fa-grip-lines"></i></td>
-              <td>{{ element.question }}</td>
-              <td class="text-center">
-                <div class="btn-group">
-                  <button
-                    class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-                  >
-                    <i class="fa fa-fw fa-pencil-alt"></i>
-                  </button>
-                  <button
-                    class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-                  >
-                    <i class="fa fa-fw fa-times"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </template>
-        </draggable>
-
-        <!-- <draggable :list="items" tag="tbody"> </draggable>
-        <tr v-for="i in items" :key="i.id">
-          <td><i class="fa-solid fa-grip-lines"></i></td>
-          <td>{{ i.question }}</td>
-          <td class="text-center">
-            <div class="btn-group">
-              <button
-                class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-              >
-                <i class="fa fa-fw fa-pencil-alt"></i>
-              </button>
-              <button
-                class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-              >
-                <i class="fa fa-fw fa-times"></i>
-              </button>
-            </div>
-          </td>
-        </tr> -->
+      <draggable v-model="questions" tag="tbody" item-key="id" @change="dragEnd()">
+        <template #item="{ element }">
+          <tr>
+            <td><i class="fa-solid fa-grip-lines"></i></td>
+            <td>{{ element.question }}</td>
+            <td class="text-center">
+              <div class="btn-group">
+                <button
+                  class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                >
+                  <i class="fa fa-fw fa-pencil-alt"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                  @click="deleteQ(element.id)"
+                >
+                  <i class="fa fa-fw fa-times"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </template>
+      </draggable>
     </table>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import Draggable from "vuedraggable";
 
 export default {
-  components: { 
-    Draggable
-   },
+  components: {
+    Draggable,
+  },
   props: {
     items: {
       required: true,
     },
   },
+
+  data() {
+    return {
+      questions: this.items,
+    }
+  },
+  methods: {
+    dragEnd(item) {
+      axios.post(window.location.href + "/sort", {
+        questions: this.questions,
+      });
+    },
+    async deleteQ(id) {
+      const data = (await axios.post(window.location.href + "/delete", {
+        id,
+      })).data;
+
+      this.questions = data;
+    },
+  },
+  watch: {
+    items() {
+      this.questions = this.items
+    }
+  }
 };
 </script>
 
