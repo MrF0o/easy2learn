@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MCPController;
 use App\Http\Controllers\QAController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
 
 /*
@@ -20,12 +23,40 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::view('/how-it-works', 'pages.about')->name('about');
-Route::view('/benefits', 'pages.benefits')->name('benefits');
-Route::view('/pricing', 'pages.pricing')->name('pricing');
-Route::view('/login', 'pages.login')->name('login');
-Route::view('/register', 'pages.register')->name('register');
+Route::get('/how-it-works', function () {
+    View::share('title', 'Say out loud what you want to learn');
+    View::share('quote', 'While mentally rehearsing is good, rehearsing out loud is even better');
+    return view('pages.about');
+})->name('about');
+
+Route::get('/benefits', function () {
+    View::share('title', 'Space out your review sessions');
+    View::share('quote', 'You\'ll have better long-term memory if you practice frequently');
+    return view('pages.benefits');
+})->name('benefits');
+
+Route::get('/pricing', function () {
+    View::share('title', 'Take a 10-minute break each hour');
+    View::share('quote', 'Give your brain some oxygen!');
+    return view('pages.pricing');
+})->name('pricing');
+
+Route::view('/login', function () {
+    View::share('title', 'Don\'t get distracted');
+    View::share('quote', 'Focus on your course only');
+    return view('pages.login');
+})->name('login');
+
+Route::get('/register', function () {
+    View::share('title', 'Don\'t get distracted');
+    View::share('quote', 'Focus on your course only');
+    return view('pages.register');
+})->name('register');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/mcp', [MCPController::class, 'index'])->name('mcp');
+Route::get('/backend/students', [StudentController::class, 'index'])->name('students.list');
+Route::get('/backend/students/count', [StudentController::class, 'count'])->name('students.count');
 Route::post('/mcp/questions/store', [QAController::class, 'store'])->name('question.store');
 Route::get('/mcp/questions/list', [QAController::class, 'list'])->name('question.list');
 Route::post('/mcp/questions/sort', [QAController::class, 'reorder'])->name('question.reorder');

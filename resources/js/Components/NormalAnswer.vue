@@ -15,7 +15,7 @@
           v-show="!isAnswerShowing"
           style="resize: none"
           rows="6"
-          class="form-control"
+          class="form-control d-none d-md-block"
           placeholder="Try to answer here or click the SHOW ANSWER button"
         ></textarea>
         <div class="d-flex justify-content-between align-items-center py-2">
@@ -77,37 +77,43 @@ export default {
       nextQuestionsCount: 5,
       prevQuestionsCount: 0,
       currentQuestion: {},
+      allQuestionsCount: 0
     };
   },
   mounted() {
     axios
       .get(window.location.href + `mcp/questions/${this.currentQuestionNum}`)
       .then((res) => {
-        this.currentQuestion = res.data;
+        this.currentQuestion = res.data.data;
+        this.allQuestionsCount = res.data.count;
       });
   },
   methods: {
     showAnswer() {},
     nextAnswer(e) {
       e.preventDefault();
+
+      if (this.currentQuestionNum >= this.allQuestionsCount) this.currentQuestionNum = 1
+
       this.currentQuestionNum++;
       axios
         .get(
           window.location.href + `mcp/questions/${this.currentQuestionNum}`
         )
         .then((res) => {
-          this.currentQuestion = res.data;
+          this.currentQuestion = res.data.data;
         });
     },
     prevAnswer(e) {
       e.preventDefault();
       this.currentQuestionNum--;
+      if (this.currentQuestionNum < 1) this.currentQuestionNum = 1
       axios
         .get(
           window.location.href + `mcp/questions/${this.currentQuestionNum}`
         )
         .then((res) => {
-          this.currentQuestion = res.data;
+          this.currentQuestion = res.data.data;
         });
     },
   },

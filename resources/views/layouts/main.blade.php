@@ -39,7 +39,7 @@
         <!-- END Main Container -->
     </div>
 
-    @include('inc.quiz')
+    @include('inc.quiz', ['quote' => $quote])
 
     <footer id="page-footer" class="bg-body-light">
         @include('inc.footer')
