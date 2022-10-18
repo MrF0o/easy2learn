@@ -38,21 +38,9 @@
           </router-link>
         </li>
         <li class="nav-main-item">
-          <router-link class="nav-main-link" to="/mcp">
+          <router-link class="nav-main-link" to="/mcp/students">
             <i class="nav-main-link-icon si si-layers"></i>
-            <span class="nav-main-link-name">Students Free</span>
-          </router-link>
-        </li>
-        <li class="nav-main-item">
-          <router-link class="nav-main-link" to="/mcp">
-            <i class="nav-main-link-icon si si-layers"></i>
-            <span class="nav-main-link-name">Students +</span>
-          </router-link>
-        </li>
-        <li class="nav-main-item">
-          <router-link class="nav-main-link" to="/mcp">
-            <i class="nav-main-link-icon si si-layers"></i>
-            <span class="nav-main-link-name">Students ++</span>
+            <span class="nav-main-link-name">Students</span>
           </router-link>
         </li>
         <li class="nav-main-item">

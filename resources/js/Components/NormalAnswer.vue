@@ -15,7 +15,7 @@
           v-show="!isAnswerShowing"
           style="resize: none"
           rows="6"
-          class="form-control"
+          class="form-control d-none d-md-block"
           placeholder="Try to answer here or click the SHOW ANSWER button"
         ></textarea>
         <div class="d-flex justify-content-between align-items-center py-2">
