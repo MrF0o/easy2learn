@@ -49,7 +49,7 @@ export default {
     data() {
         return {
             questions: [],
-            search: 'last'
+            search: ''
         }
     },
     methods: {
@@ -59,7 +59,6 @@ export default {
         },
         async searchAnswer() {
             this.questions = await provider.search(this.search);
-            console.log(this.questions)
         }
     }
 };

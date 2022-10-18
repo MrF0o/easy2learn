@@ -37,7 +37,10 @@ class QAController extends Controller
 
     function get($number)
     {
-        return Question::where('order', $number)->first();
+        return [
+            'data' => Question::where('order', $number)->first(),
+            'count' => \Illuminate\Support\Facades\DB::table('questions')->count()
+        ];
     }
 
     function search(Request $request)
