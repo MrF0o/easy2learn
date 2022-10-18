@@ -41,7 +41,7 @@ Route::get('/pricing', function () {
     return view('pages.pricing');
 })->name('pricing');
 
-Route::view('/login', function () {
+Route::get('/login', function () {
     View::share('title', 'Don\'t get distracted');
     View::share('quote', 'Focus on your course only');
     return view('pages.login');
