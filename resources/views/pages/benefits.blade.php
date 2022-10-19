@@ -8,7 +8,7 @@
             <h4>With Easy2Learn:</h4>
         </div>
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <ul class="list-unstyled">
