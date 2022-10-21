@@ -45,13 +45,13 @@ Route::get('/login', function () {
     View::share('title', 'Don\'t get distracted');
     View::share('quote', 'Focus on your course only');
     return view('pages.login');
-})->name('login');
+})->name('login')->middleware('guest');
 
 Route::get('/register', function () {
     View::share('title', 'Don\'t get distracted');
     View::share('quote', 'Focus on your course only');
     return view('pages.register');
-})->name('register');
+})->name('register')->middleware('guest');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/mcp', [MCPController::class, 'index'])->name('mcp');
