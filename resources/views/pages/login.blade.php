@@ -3,11 +3,11 @@
 @section('content')
     <div class="row content">
 
-        <div class="row justify-content-center ">
+        {{-- <div class="row justify-content-center ">
             <div class="col-md-6 mb-3">
                 <div class="alert alert-primary fw-bold text-center">Please confirm your email address by clicking the verification link in the mail.</div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="col-lg-5 col-md-7 mx-auto">
             <div class="block-rounded block">
