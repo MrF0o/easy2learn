@@ -8,12 +8,11 @@
         <div class="col-md-6 col-xl-3">
             <a href="javascript:void(0)" class="block-rounded block-link-shadow block text-center">
                 <div class="block-header">
-                    <h2 class="block-title">Free</h2>
+                    <h2 class="block-title fs-lg">Free</h2>
                 </div>
                 <div class="block-content bg-body-light">
                     <div class="py-2">
                         <p class="h1 fw-bold mb-2">$0</p>
-                        <p class="h6 text-muted">per year</p>
                     </div>
                 </div>
                 <div class="block-content">
@@ -32,12 +31,11 @@
         <div class="col-md-6 col-xl-3">
             <a href="javascript:void(0)" class="block-rounded block-link-shadow block text-center">
                 <div class="block-header">
-                    <h2 class="block-title">STUDENT +</h2>
+                    <h2 class="block-title fs-lg">STUDENT +</h2>
                 </div>
                 <div class="block-content bg-body-light">
                     <div class="py-2">
-                        <p class="h1 fw-bold mb-2">$49</p>
-                        <p class="h6 text-muted">per year</p>
+                        <p class="h1 fw-bold mb-2">4$/mo <span class="fs-sm">($48/year)</span></p>
                     </div>
                 </div>
                 <div class="block-content">

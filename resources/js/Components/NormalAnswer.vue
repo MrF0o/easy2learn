@@ -10,22 +10,22 @@
       {{ currentQuestion.question }}
     </p>
     <div class="row">
-      <div class="col px-1 pb-1">
+      <div class="col-12 col-md px-1 pb-1">
         <textarea
           v-show="!isAnswerShowing"
           style="resize: none"
           rows="6"
-          class="form-control d-none d-md-block"
+          class="form-control"
           placeholder="Try to answer here or click the SHOW ANSWER button"
         ></textarea>
-        <div class="d-flex justify-content-between align-items-center py-2">
+        <div class="d-flex justify-content-center justify-content-md-between align-items-center py-2 flex-wrap">
           <div class="d-none d-md-block">
-            <a href="#" class="link">How does it work?</a>
+            <a href="/how-it-works" class="link">How does it work?</a>
           </div>
-          <div class="h2 p-0 m-0">
+          <div class="h2 p-0 m-0 col-12 col-md-1 d-flex d-md-block justify-content-evenly align-items-center">
             <a
               href="#"
-              :class="(prevQuestionsCount > 0 ? 'text-primary' : '') + 'p-1'"
+              class="text-primary p-1"
               @click="prevAnswer($event)"
               ><i class="fa-solid fa-angle-left"></i
             ></a>
@@ -36,7 +36,7 @@
               ><i class="fa-solid fa-angle-right"></i
             ></a>
           </div>
-          <div class="d-flex align-items-center">
+          <div class="d-flex justify-content-center pt-4 pt-md-0 align-items-center">
             <div class="">
               <button
                 class="btn btn-primary btn-sm"
@@ -50,10 +50,13 @@
                 {{ !isAnswerShowing ? "SHOW ANSWER" : "HIDE ANSWER" }}
               </button>
             </div>
+            <div class="col-auto d-md-none d-block" v-show="!isAnswerShowing">
+              <button class="btn"><i class="fa fa-sliders"></i></button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-auto" v-show="!isAnswerShowing">
+      <div class="col-auto d-none d-md-block" v-show="!isAnswerShowing">
         <button class="btn"><i class="fa fa-sliders"></i></button>
       </div>
     </div>
@@ -77,7 +80,7 @@ export default {
       nextQuestionsCount: 5,
       prevQuestionsCount: 0,
       currentQuestion: {},
-      allQuestionsCount: 0
+      allQuestionsCount: 0,
     };
   },
   mounted() {
@@ -93,13 +96,12 @@ export default {
     nextAnswer(e) {
       e.preventDefault();
 
-      if (this.currentQuestionNum >= this.allQuestionsCount) this.currentQuestionNum = 1
+      if (this.currentQuestionNum >= this.allQuestionsCount)
+        this.currentQuestionNum = 1;
 
       this.currentQuestionNum++;
       axios
-        .get(
-          window.location.href + `mcp/questions/${this.currentQuestionNum}`
-        )
+        .get(window.location.href + `mcp/questions/${this.currentQuestionNum}`)
         .then((res) => {
           this.currentQuestion = res.data.data;
         });
@@ -107,11 +109,9 @@ export default {
     prevAnswer(e) {
       e.preventDefault();
       this.currentQuestionNum--;
-      if (this.currentQuestionNum < 1) this.currentQuestionNum = 1
+      if (this.currentQuestionNum < 1) this.currentQuestionNum = 1;
       axios
-        .get(
-          window.location.href + `mcp/questions/${this.currentQuestionNum}`
-        )
+        .get(window.location.href + `mcp/questions/${this.currentQuestionNum}`)
         .then((res) => {
           this.currentQuestion = res.data.data;
         });
