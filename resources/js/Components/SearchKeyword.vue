@@ -23,7 +23,11 @@
           >
             <i class="fa fa-times"></i>
           </button>
-          <button type="button" class="btn bg-gray rounded" @click="searchAnswer()">
+          <button
+            type="button"
+            class="btn bg-gray rounded"
+            @click="searchAnswer()"
+          >
             <i class="fa fa-search"></i>
           </button>
         </div>
@@ -33,7 +37,9 @@
       </div>
     </div>
     <div v-show="questions.length">
-      <div class="fw-bold fs-sm my-2"><u>{{questions.length}} RESULTS</u></div>
+      <div class="fw-bold fs-sm my-2">
+        <u>{{ questions.length }} RESULTS</u>
+      </div>
       <div class="result" v-for="q in questions" :key="q.id">
         <h4 v-html="q.question"></h4>
         <div v-html="q.answer"></div>
@@ -43,24 +49,29 @@
 </template>
 
 <script>
-import provider from '../AnswerProvider';
+import provider from "../AnswerProvider";
 
 export default {
-    data() {
-        return {
-            questions: [],
-            search: ''
-        }
+  props: {
+    filters: {
+      required: true,
     },
-    methods: {
-        clear() {
-            this.search = '';
-            this.questions = [];
-        },
-        async searchAnswer() {
-            this.questions = await provider.search(this.search);
-        }
-    }
+  },
+  data() {
+    return {
+      questions: [],
+      search: "",
+    };
+  },
+  methods: {
+    clear() {
+      this.search = "";
+      this.questions = [];
+    },
+    async searchAnswer() {
+      this.questions = await provider.search(this.search);
+    },
+  },
 };
 </script>
 

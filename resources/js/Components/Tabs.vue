@@ -29,21 +29,30 @@
     </li>
   </ul>
   <div class="block-content tab-content overflow-hidden">
-    <NormalAnswer />
-    <SearchKeyword />
+    <NormalAnswer :filters="filter" />
+    <SearchKeyword :filters="filter" />
   </div>
 </template>
 
 <script>
-import NormalAnswer from './NormalAnswer.vue';
-import SearchKeyword from './SearchKeyword.vue';
+import NormalAnswer from "./NormalAnswer.vue";
+import SearchKeyword from "./SearchKeyword.vue";
 
 export default {
-  components: {NormalAnswer, SearchKeyword},
+  components: { NormalAnswer, SearchKeyword },
   data() {
     return {
       activeTab: {},
+      filter: {}
     };
+  },
+  mounted() {
+    this.filter = {
+        show_random_questions: true,
+        hide_textarea: true,
+        hide_answers_button: false,
+        search_based_on: 'both',
+      };
   },
 };
 </script>
