@@ -20,6 +20,16 @@
             <div class="nav-main-horizontal text-uppercase">
                 <li class="nav-main-item">
                     <div>
+                        <a aria-current="page" href="/" class="active nav-main-link">
+
+                            <span class="nav-main-link-name">Home</span>
+                            <!---->
+                        </a>
+                    </div>
+                    <!---->
+                </li>
+                <li class="nav-main-item">
+                    <div>
                         <a aria-current="page" href=" {{ route('benefits') }} " class="active nav-main-link">
 
                             <span class="nav-main-link-name">The
