@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="block-content block-content-full bg-body-light">
-                    <span class="btn btn-primary px-4">REGISTER</span>
+                    <span class="btn btn-primary px-4" onclick="window.location.href = '{{route('register')}}'">REGISTER</span>
                 </div>
             </a>
         </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="block-content bg-body-light">
                     <div class="py-2">
-                        <p class="h1 fw-bold mb-2">4$/mo <span class="fs-sm">($48/year)</span></p>
+                        <p class="h1 fw-bold mb-2">4$/mo <div class="fs-sm">($48/year)</div></p>
                     </div>
                 </div>
                 <div class="block-content">

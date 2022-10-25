@@ -29,6 +29,8 @@ class RegisterController extends Controller
 
         $user = User::create($validated);
 
+        $user->filter()->create();
+
         $user->save();
 
         auth()->login($user);

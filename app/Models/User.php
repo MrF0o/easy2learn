@@ -42,4 +42,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function filter() {
+        return $this->hasOne(Filter::class);
+    }
 }

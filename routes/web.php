@@ -6,6 +6,8 @@ use App\Http\Controllers\MCPController;
 use App\Http\Controllers\QAController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
@@ -63,6 +65,35 @@ Route::post('/mcp/questions/sort', [QAController::class, 'reorder'])->name('ques
 Route::post('/mcp/questions/delete', [QAController::class, 'delete'])->name('question.delete');
 Route::get('/mcp/questions/{id}', [QAController::class, 'get'])->name('question.get');
 Route::post('/mcp/questions/search', [QAController::class, 'search'])->name('question.search');
+Route::get('/mcp/user/filter', function () {
+    if (Auth::check()) {
+        return auth()->user()->filter;
+    } else {
+        return response([]);
+    }
+})->name('user.filter');
+
+Route::post('/mcp/user/filter', function (Request $request) {
+    if (Auth::check()) {
+        $filter = auth()->user()->filter;
+
+        if ($filter) {
+            $filter->update([
+                'show_random_questions' => $request->input('show_random_questions'),
+                'hide_textarea' => $request->input('hide_textarea'),
+                'hide_answers_button' => $request->input('hide_answers_button'),
+                'search_based_on' => $request->input('search_based_on')
+            ]);
+
+            return $filter;
+        }
+
+        return auth()->user();
+    }
+
+    return response('Please login', 401);
+})->name('user.filter.update');
+
 Route::get('/mcp/{any?}', [MCPController::class, 'index'])->where('any', '.*')->name('mcp.any');
 
 

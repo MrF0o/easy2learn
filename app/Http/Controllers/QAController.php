@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QAController extends Controller
 {
@@ -35,12 +36,20 @@ class QAController extends Controller
         return Question::orderBy('order', 'ASC')->get();
     }
 
-    function get($number)
+    function get(Request $request, $number)
     {
-        return [
-            'data' => Question::where('order', $number)->first(),
-            'count' => \Illuminate\Support\Facades\DB::table('questions')->count()
-        ];
+        $rand = $request->input('random_question');
+        if ($rand === '1' || $rand === 'true') {
+            return [
+                'data' => Question::inRandomOrder()->first(),
+                'count' => 1
+            ];
+        } else {
+            return [
+                'data' => Question::where('order', $number)->first(),
+                'count' => \Illuminate\Support\Facades\DB::table('questions')->count()
+            ];
+        }
     }
 
     function search(Request $request)
