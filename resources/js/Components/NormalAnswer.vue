@@ -96,7 +96,7 @@
         <button class="btn"><i class="fa fa-sliders"></i></button>
       </div>
     </div>
-    <div id="answer" class="collapse">
+    <div v-show="isAnswerShowing">
       <hr />
       <div><h4 class="fs-sm">ANSWER:</h4></div>
       <div v-html="currentQuestion.answer"></div>
@@ -242,6 +242,7 @@ export default {
   methods: {
     showAnswer() {},
     nextAnswer(e) {
+      this.isAnswerShowing = false;
       e.preventDefault();
 
       if (this.currentQuestionNum >= this.allQuestionsCount)
@@ -256,6 +257,8 @@ export default {
     },
     prevAnswer(e) {
       e.preventDefault();
+      this.isAnswerShowing = false;
+      this.$forceUpdate();
       this.currentQuestionNum--;
       if (this.currentQuestionNum < 1) this.currentQuestionNum = 1;
       axios
