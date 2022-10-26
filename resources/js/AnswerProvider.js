@@ -11,18 +11,27 @@ function highlight(str, search) {
 }
 
 class AnswerProvider {
-    async search(term) {
+    async search(term, filter) {
         // TODO: get from backend
         const questions = (await axios.post(window.location.href + `mcp/questions/search`, {
-            searchQuery: term
+            searchQuery: term,
+            filter: filter
         })).data;
 
         const result = [];
 
         for (let i = 0; i < questions.length; i++) {
             const highlighted = questions[i];
-            highlighted.question = highlight(highlighted.question, term);
-            highlighted.answer = highlight(highlighted.answer, term);
+            
+            if (filter === 'both') {
+                highlighted.question = highlight(highlighted.question, term);
+                highlighted.answer = highlight(highlighted.answer, term);
+            } else if (filter === 'question') {
+                highlighted.question = highlight(highlighted.question, term);
+            } else {
+                highlighted.answer = highlight(highlighted.answer, term);
+            }
+
             result.push(highlighted);
         }
 
