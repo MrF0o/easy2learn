@@ -12,7 +12,7 @@
       /></span>
       {{ currentQuestion.question }}
     </p>
-    <div class="row">
+    <div class="row align-items-center">
       <div class="col-12 col-md px-1 pb-1">
         <textarea
           style="resize: none"
@@ -93,7 +93,7 @@
         data-bs-target="#filter-modal"
         v-show="!isAnswerShowing"
       >
-        <button class="btn"><i class="fa fa-sliders"></i></button>
+        <button class="btn btn-sm m-0"><i class="fa fa-sliders"></i></button>
       </div>
     </div>
     <div v-show="isAnswerShowing">
