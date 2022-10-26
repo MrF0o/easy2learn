@@ -58,7 +58,7 @@
   </div>
 
   <div
-    class="modal"
+    class="modal modal-dialog-centered"
     id="search-filter-modal"
     tabindex="-1"
     aria-labelledby="filter-modal"
