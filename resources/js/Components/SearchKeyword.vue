@@ -30,10 +30,20 @@
           >
             <i class="fa fa-search"></i>
           </button>
+          <div
+            class="col-auto d-none d-md-block"
+            data-bs-toggle="modal"
+            data-bs-target="#search-filter-modal"
+          >
+            <button class="btn"><i class="fa fa-sliders"></i></button>
+          </div>
         </div>
         <p class="fs-xs text-muted">
           Search for "advantage"" , "pricing" or any other keyword
         </p>
+      </div>
+      <div class="alert alert-primary alert-dismissible" v-if="message">
+        {{message}}
       </div>
     </div>
     <div v-show="questions.length">
@@ -43,6 +53,122 @@
       <div class="result" v-for="q in questions" :key="q.id">
         <h4 v-html="q.question"></h4>
         <div v-html="q.answer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal"
+    id="search-filter-modal"
+    tabindex="-1"
+    aria-labelledby="filter-modal"
+    style="display: none"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="block-rounded block-transparent block mb-0">
+          <div class="block-header block-header-default">
+            <h3 class="block-title">
+              <span><i class="fa fa-sliders"></i></span>
+              Filter
+              <!---->
+            </h3>
+            <div class="block-options space-x-1">
+              <button
+                type="button"
+                class="btn-block-option"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <i class="fa fa-fw fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="block-content fs-sm">
+            <!-- CONTENT  -->
+            <form>
+              <div>
+                <div>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <label class="form-check-label"
+                        >Search for keywords in QUESTION and ANSWER</label
+                      >
+                    </div>
+                    <div class="form-check d-inline">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        v-model="filter.search_based_on"
+                        name="search-both"
+                        value="both"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <label class="form-check-label"
+                        >Search for keywords in QUESTION only</label
+                      >
+                    </div>
+                    <div class="form-check d-inline">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        v-model="filter.search_based_on"
+                        name="search-question"
+                        value="question"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <label class="form-check-label"
+                        >Search for keywords in ANSWER</label
+                      >
+                    </div>
+                    <div class="form-check d-inline">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        v-model="filter.search_based_on"
+                        name="search-answer"
+                        value="answer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="block-content block-content-full text-end bg-body">
+            <button
+              type="button"
+              class="btn btn-sm btn-alt-secondary me-1"
+              data-bs-dismiss="modal"
+            >
+              Close</button
+            ><button
+              type="button"
+              class="btn btn-sm btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Perfect
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -60,7 +186,11 @@ export default {
   data() {
     return {
       questions: [],
-      search: "",
+      search: null,
+      filter: {
+        search_based_on: "both",
+      },
+      message: null,
     };
   },
   methods: {
@@ -69,7 +199,33 @@ export default {
       this.questions = [];
     },
     async searchAnswer() {
-      this.questions = await provider.search(this.search);
+
+      if (!this.search) {
+        this.message = 'Please provide a search keyword!';
+        return;
+      }
+
+
+      this.questions = await provider.search(
+        this.search,
+        this.filter.search_based_on
+      );
+
+      if (this.questions.length === 0) {
+        this.message = 'No results found.';
+        return;
+      }
+
+
+      this.message = null;
+    },
+    setFilterOption(option) {
+      this.filter.search_based_on = option;
+    },
+  },
+  watch: {
+    filters() {
+      this.filter = this.filters;
     },
   },
 };

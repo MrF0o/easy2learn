@@ -54,13 +54,25 @@ class QAController extends Controller
 
     function search(Request $request)
     {
-        return Question::where('question', 'like', '%' . $request->searchQuery . '%')
-            ->orWhere('answer', 'like', '%' . $request->searchQuery . '%')->get();
+
+        if ($request->filter === 'both' && $request->searchQuery) {
+            return Question::where('question', 'like', '%' . $request->searchQuery . '%')
+                ->orWhere('answer', 'like', '%' . $request->searchQuery . '%')->get();
+        }
+
+        if ($request->filter === 'question' && $request->searchQuery) {
+            return Question::where('question', 'like', '%' . $request->searchQuery . '%')->get();
+        }
+
+        if ($request->filter === 'answer' && $request->searchQuery) {
+            return Question::where('answer', 'like', '%' . $request->searchQuery . '%')->get();
+        }
+
+        return [];
     }
 
     function reorder(Request $request)
     {
-        // dd($request->questions);
         foreach ($request->questions as $ndx => $row) {
             Question::find($row['id'])->update([
                 'order' => $ndx + 1
