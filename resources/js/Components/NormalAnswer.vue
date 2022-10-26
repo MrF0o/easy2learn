@@ -7,9 +7,14 @@
     tabindex="0"
   >
     <p class="fw-normal h5 question fw-bold">
-      <span class="bg-gray rounded-circle"
-        ><img src="/media/question-icon.png" alt="Question Icon - Easy2Learn"
-      /></span>
+      <span class="px-1 px-md-3">
+        <span class="bg-gray rounded-circle">
+          <img
+            src="/media/question-icon.png"
+            alt="Question Icon - Easy2Learn"
+          />
+        </span>
+      </span>
       {{ currentQuestion.question }}
     </p>
     <div class="row align-items-center">
@@ -30,8 +35,10 @@
             flex-wrap
           "
         >
-          <div class="d-none d-md-block">
-            <a href="/how-it-works" class="link">How does it work?</a>
+          <div class="d-none d-md-block flex-shrink d">
+            <a href="/how-it-works" class="link" style="visibility: hidden">
+              How does it work?</a
+            >
           </div>
           <div
             class="
@@ -39,17 +46,19 @@
               p-0
               m-0
               col-12 col-md-1
-              d-flex d-md-block
+              d-flex
               justify-content-evenly
               align-items-center
             "
           >
-            <a href="#" class="text-primary p-1" @click="prevAnswer($event)"
+            <a href="#" class="text-primary px-md-5" @click="prevAnswer($event)"
               ><i class="fa-solid fa-angle-left"></i
             ></a>
             <a
               href="#"
-              :class="(nextQuestionsCount > 0 ? 'text-primary' : '') + 'p-1'"
+              :class="
+                (nextQuestionsCount > 0 ? 'text-primary' : '') + 'px-md-5'
+              "
               @click="nextAnswer($event)"
               ><i class="fa-solid fa-angle-right"></i
             ></a>
@@ -199,7 +208,7 @@
               data-bs-dismiss="modal"
               @click="submitQuestion()"
             >
-              Perfect
+              Save
             </button>
           </div>
         </div>
@@ -231,7 +240,10 @@ export default {
   },
   mounted() {
     axios
-      .get(window.location.href + `mcp/questions/${this.currentQuestionNum}?random_question=${this.filter.show_random_questions}`)
+      .get(
+        window.location.href +
+          `mcp/questions/${this.currentQuestionNum}?random_question=${this.filter.show_random_questions}`
+      )
       .then((res) => {
         this.currentQuestion = res.data.data;
         this.allQuestionsCount = res.data.count;
@@ -250,7 +262,10 @@ export default {
 
       this.currentQuestionNum++;
       axios
-        .get(window.location.href + `mcp/questions/${this.currentQuestionNum}?random_question=${this.filter.show_random_questions}`)
+        .get(
+          window.location.href +
+            `mcp/questions/${this.currentQuestionNum}?random_question=${this.filter.show_random_questions}`
+        )
         .then((res) => {
           this.currentQuestion = res.data.data;
         });
@@ -262,7 +277,10 @@ export default {
       this.currentQuestionNum--;
       if (this.currentQuestionNum < 1) this.currentQuestionNum = 1;
       axios
-        .get(window.location.href + `mcp/questions/${this.currentQuestionNum}?random_question=${this.filter.show_random_questions}`)
+        .get(
+          window.location.href +
+            `mcp/questions/${this.currentQuestionNum}?random_question=${this.filter.show_random_questions}`
+        )
         .then((res) => {
           this.currentQuestion = res.data.data;
         });
@@ -272,7 +290,7 @@ export default {
         show_random_questions: true,
         hide_textarea: true,
         hide_answers_button: false,
-        search_based_on: 'both',
+        search_based_on: "both",
       };
 
       axios
