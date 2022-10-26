@@ -165,7 +165,7 @@
               class="btn btn-sm btn-primary"
               data-bs-dismiss="modal"
             >
-              Perfect
+              Save
             </button>
           </div>
         </div>
