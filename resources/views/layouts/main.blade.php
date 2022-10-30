@@ -22,6 +22,20 @@
     <!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
     {{-- @vite(['resources/sass/main.scss', 'resources/sass/oneui/themes/amethyst.scss', 'resources/js/oneui/app.js']) --}}
     @yield('js')
+
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-246383856-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-246383856-1');
+    </script>
+
 </head>
 
 <body>
@@ -33,7 +47,7 @@
         </header>
 
         <!-- Main Container -->
-        <main >
+        <main>
             @yield('content')
         </main>
         <!-- END Main Container -->
