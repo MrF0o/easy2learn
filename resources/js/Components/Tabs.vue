@@ -48,7 +48,7 @@ export default {
   },
   mounted() {
     this.filter = {
-        show_random_questions: true,
+        show_random_questions: false,
         hide_textarea: true,
         hide_answers_button: false,
         search_based_on: 'both',
