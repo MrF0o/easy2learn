@@ -60,6 +60,16 @@
                     </div>
                     <!---->
                 </li>
+                <li class="nav-main-item">
+                    <div>
+                        <a aria-current="page" href="https://www.ezlauncher.com/products/easy2learn" class="active nav-main-link">
+
+                            <span class="nav-main-link-name">support</span>
+                            <!---->
+                        </a>
+                    </div>
+                    <!---->
+                </li>
                 @if (!Auth::check())
                     <div class="d-lg-flex justify-lg-content-end align-items-lg-center ps-lg-3">
                         <li class="nav-main-item">

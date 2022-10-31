@@ -22,6 +22,29 @@
     <!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
     {{-- @vite(['resources/sass/main.scss', 'resources/sass/oneui/themes/amethyst.scss', 'resources/js/oneui/app.js']) --}}
     @yield('js')
+
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-246383856-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-246383856-1');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6163553030411967"
+        crossorigin="anonymous"></script>
+    <!-- E2L horizontaal -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6163553030411967" data-ad-slot="2200440395"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
 </head>
 
 <body>
@@ -33,7 +56,7 @@
         </header>
 
         <!-- Main Container -->
-        <main >
+        <main>
             @yield('content')
         </main>
         <!-- END Main Container -->

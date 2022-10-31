@@ -70,6 +70,13 @@ span.marked {
     }
 }
 
+.play-btn {
+    font-size: 32px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+}
+
 $sizes: (
     25: 25%,
     35: 35%,
