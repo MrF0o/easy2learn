@@ -10,7 +10,7 @@
         aria-controls="btabs-animated-fade-home"
         aria-selected="true"
       >
-        TEST EXAM
+        DEMO EXAM
       </button>
     </li>
     <li class="nav-item" role="presentation">
